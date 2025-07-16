@@ -1,10 +1,10 @@
 #include<stdio.h>	//declaring variable positionof top element 
-void insert(int ch,int s[5],int top){		//Function to insert element into stack
+void insert(int e,int s[5],int top){		//Function to insert element into stack
 	if(top+1==5){
 		printf("Error : Stack is Full");
 	}
 	else{
-		s[++top]=ch; 
+		s[++top]=e; 
 	}
 }
 void erase(int top,int s[5]) //function to delete top element
