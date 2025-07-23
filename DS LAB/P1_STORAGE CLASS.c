@@ -1,4 +1,8 @@
-//Program 1 USE DIFFERENT STORAGE CLASSES (LOCAL,GLOBAL,STATIC,REGISTER)
+/*Program 1 USE DIFFERENT STORAGE CLASSES (LOCAL,GLOBAL,STATIC,REGISTER)
+@ALBIN MAMMEN MATHEW
+16/07/2025
+*/
+
 #include <stdio.h>
 int a=10;	//this is a global variable
 void disp(){

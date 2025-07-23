@@ -1,0 +1,6 @@
+/*PROGRAM-8 MATRIX OPERATIONS
+@ALBIN MAMMEN MATHEW
+23/07/2025
+*/
+#include<stdio.h>
+
