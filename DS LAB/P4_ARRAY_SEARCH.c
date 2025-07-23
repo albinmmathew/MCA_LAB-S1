@@ -40,8 +40,8 @@ int main(){
 //LOGIC 2
 
 void search(int b,int a[5]){
-	int isfound=0;
-	for (int i=0;i<5;i++){
+	int isfound=0,i;
+	for (i=0;i<5;i++){
 		if(b==a[i]){
 			isfound=1;
 			printf("Element found at [%d] position. \n",i);
@@ -51,12 +51,12 @@ void search(int b,int a[5]){
 		printf("element not found");
 }
 int main(){
-	int a[5],ch;
-	for (int i=0;i<5;i++){
+	int a[5],ch,i;
+	for (i=0;i<5;i++){
 		printf("Enter the [%d] element : ",i);
 		scanf("%d",&a[i]);
 	}
-	for (int i=0;i<5;i++){
+	for (i=0;i<5;i++){
 		printf("%d \t",a[i]);
 	}
 	printf("\n");
