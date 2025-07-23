@@ -35,7 +35,8 @@ void display(int a[5], int pos)
     }
     else
     {
-        for (int i = 0; i <= pos; i++)
+    	int i;
+        for (i = 0; i <= pos; i++)
         {
             printf("%d\t", a[i]);
         }
@@ -44,8 +45,8 @@ void display(int a[5], int pos)
 }
 
 void search(int b,int a[5],int pos){
-	int isfound=0;
-	for (int i=0;i<=pos;i++){
+	int isfound=0,i;
+	for (i=0;i<=pos;i++){
 		if(b==a[i]){
 			isfound=1;
 			printf("Element found at [%d] position. \n",i);
@@ -55,7 +56,17 @@ void search(int b,int a[5],int pos){
 		printf("element not found");
 }
 
-void sort(){
+void sort(int a[5]){	//function to sort the stack
+	int i,j,temp;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+			if(a[i]<a[j]){
+				temp=a[i];
+				a[i]=a[j];
+				a[j]=temp;
+			}
+		}
+	}
 }
 
 int menu()
@@ -68,7 +79,7 @@ int menu()
 
 void processArray()
 {
-    int a[5], pos = -1;
+    int a[5], pos = -1,b;
     int ch, value;
     for (ch = menu(); ch != 6; ch = menu())
     {
@@ -86,13 +97,12 @@ void processArray()
                 display(a, pos);
                 break;
             case 4:
-            	int b;
             	printf("Enter the element to search: ");
             	scanf("%d",&b);
             	search(b,a,pos);
             	break;
             case 5:
-            	sort();
+            	sort(a);
             	break;
             default:
                 printf("Error: Wrong Choice.\n");

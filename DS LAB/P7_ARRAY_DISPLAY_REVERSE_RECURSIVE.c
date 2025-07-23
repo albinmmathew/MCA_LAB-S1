@@ -1,14 +1,14 @@
-//PROGRAM-6 DISPLAY ARRAY USING RECURSIVE FUNCTION
+//PROGRAM-7 DISPLAY ARRAY INN REVERSE USING RECURSIVE FUNCTION
 
 #include<stdio.h>
-int j=0,arr[10];
+int j=10,arr[10];
 void display(){
-	if(j<10){
+	if(j>0){
+		j--;
 		printf("%d\t",arr[j]);
-		j++;
 		display();
-	if(j==10)
-		j=0;
+	if(j==0)
+		j=10;
 	}
 }
 

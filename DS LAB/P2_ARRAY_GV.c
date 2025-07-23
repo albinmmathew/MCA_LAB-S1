@@ -23,8 +23,8 @@ int erase() //function to delete top element
 	return top;
 }
 void search(int b,int a[5],int top){ //function to search elements
-	int isfound=0;
-	for (int i=0;i<=top;i++){
+	int isfound=0,i;
+	for (i=0;i<=top;i++){
 		if(b==a[i]){
 			isfound=1;
 			printf("Element found at [%d] position. \n",i);
@@ -38,16 +38,27 @@ void display(){ //function to display the elements in stack
 	if (top==-1)
 		printf("Empty Stack");
 	else{
-		for(int i=0;i<=top;i++){
+		int i;
+		for(i=0;i<=top;i++){
 			printf("%d \t",stack[i]);
 		}
 		printf("\n");
 	}
 }
-int sort(){
-	//for 
-	return 0;
+
+void sort(){	//function to sort the stack
+	int i,j,temp;
+	for(i=0;i<5;i++){
+		for(j=0;j<5;j++){
+			if(stack[i]<stack[j]){
+				temp=stack[i];
+				stack[i]=stack[j];
+				stack[j]=temp;
+			}
+		}
+	}
 }
+
 int menu(){ //function for menu
 	int ch;
 	printf("\n INSERT-1 \n DELETE-2 \n DISPLAY-3 \n SEARCH-4 \n SORT-5 \n EXIT -6 \n Enter your choice : ");
@@ -55,7 +66,7 @@ int menu(){ //function for menu
 	return ch;
 }
 void processStack(){ //working of menu
-	int ch;
+	int ch,b;
 	for (ch=menu();ch!=6;ch=menu()){
 		switch(ch){
 			case 1: //insert 
@@ -70,12 +81,12 @@ void processStack(){ //working of menu
 				display();
 				break;
 			case 4: //search
-				int b;
 				printf("Enter the value to search : ");
 				scanf("%d",&b);
 				search(b,stack,top);
 				break;
 			case 5:// sort
+				sort();
 				break;
 			default://any other options
 				printf("Error: Wrong Choice");
