@@ -6,7 +6,7 @@
 #include<stdio.h>
 int a[10][10],b[10][10],m,n;
 
-void insert(int e[10][10],int m,int n){
+void insert(int e[10][10],int m,int n){ //function to insert values into the  matrix
 	int i,j;
 	for(i=0;i<m;i++){
         for(j=0;j<n;j++){
@@ -16,7 +16,7 @@ void insert(int e[10][10],int m,int n){
     }	
 }
 
-void print(int p[10][10],int m,int n){
+void print(int p[10][10],int m,int n){ //function to print a matrix
 	int i,j;
 	for(i=0;i<m;i++){
         for(j=0;j<n;j++){
@@ -26,7 +26,7 @@ void print(int p[10][10],int m,int n){
     }
 }
 
-void add(){
+void add(){ //funtion to add two matrices
 	int sum[10][10],i,j;
     for(i=0;i<m;i++){
         for(j=0;j<n;j++){
@@ -36,7 +36,7 @@ void add(){
     print(sum,m,n);
 }
 
-void diffn(){
+void diffn(){ //function to subract a mtrix from another
 	int dif[10][10],i,j;
     for(i=0;i<m;i++){
         for(j=0;j<n;j++){
@@ -62,7 +62,7 @@ int main(){
     add(m,n);
     printf("The difference of matrices is : \n");
     diffn(m,n);
-    
+    return 0;
 }
 
 

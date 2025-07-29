@@ -6,7 +6,7 @@
 
 #include<stdio.h>
 int j=0,arr[10];
-void display(){
+void display(){ //display function as a recursive function
 	if(j<10){
 		printf("%d\t",arr[j]);
 		j++;

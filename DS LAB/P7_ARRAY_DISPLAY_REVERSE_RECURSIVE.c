@@ -5,7 +5,7 @@
 
 #include<stdio.h>
 int j=10,arr[10];
-void display(){
+void display(){ //function to display elements in reverese order using recursive function
 	if(j>0){
 		j--;
 		printf("%d\t",arr[j]);
@@ -17,7 +17,7 @@ void display(){
 
 int main(){
 	int i=0;
-	for(i=0;i<10;i++){
+	for(i=0;i<10;i++){ 
 		printf("Enter the value for %d :",i);
 		scanf("%d",&arr[i]);
 	}

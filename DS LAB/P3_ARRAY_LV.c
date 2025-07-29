@@ -4,7 +4,7 @@
 */
 
 #include <stdio.h>
-int insert(int a[5], int pos, int e)
+int insert(int a[5], int pos, int e) //function to insert an element
 {
     if (pos + 1 == 5)
     {
@@ -17,7 +17,7 @@ int insert(int a[5], int pos, int e)
     return pos;
 }
 
-int erase(int a[5], int pos)
+int erase(int a[5], int pos) //function to delete top element
 {
     if (pos == -1)
     {
@@ -30,7 +30,7 @@ int erase(int a[5], int pos)
     return pos;
 }
 
-void display(int a[5], int pos)
+void display(int a[5], int pos) //function to display entire array
 {
     if (pos == -1)
     {
@@ -47,7 +47,7 @@ void display(int a[5], int pos)
     }
 }
 
-void search(int b,int a[5],int pos){
+void search(int b,int a[5],int pos){ //function to search for an element throughout the array and display its index
 	int isfound=0,i;
 	for (i=0;i<=pos;i++){
 		if(b==a[i]){
@@ -72,7 +72,7 @@ void sort(int a[5]){	//function to sort the stack
 	}
 }
 
-int menu()
+int menu() //function to create menu interface
 {
     int ch;
     printf("\nInsert - 1\nDelete - 2\nDisplay - 3\nSearch - 4\nSort - 5\nExit - 6\nEnter your choice: ");
@@ -80,7 +80,7 @@ int menu()
     return ch;
 }
 
-void processArray()
+void processArray() //working of menu
 {
     int a[5], pos = -1,b;
     int ch, value;

@@ -4,7 +4,7 @@
 */
 
 #include<stdio.h>
-void read(int n,int arr[n]){
+void read(int n,int arr[n]){ //function to insert elements in array
 	int i;
 	for(i=0;i<n;i++){
 		printf("Enter the value for %d :",i);
@@ -12,14 +12,14 @@ void read(int n,int arr[n]){
 	}
 }
 
-void disp(int n,int arr[n]){
+void disp(int n,int arr[n]){ //function to display all elemenyts in array 
 	int i;
 	for (i=0;i<n;i++){
 		printf("%d\t",arr[i]);
 	}
 }
 
-void sort(int n,int arr[n]){
+void sort(int n,int arr[n]){ //function for sorting the elements in array in ascending order
 	int i,j,temp;
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++){
@@ -32,14 +32,14 @@ void sort(int n,int arr[n]){
 	}
 }
 
-int menu(){
+int menu(){ //funtion for menu interface
 	int ch;
 	printf("\nREAD-1\nSORT-2\nDISPLAY-3\nEXIT-4\nENTER YOUR CHOICE : ");
 	scanf("%d",&ch);
 	return ch;
 }
 
-void processArray(int n,int arr[n]){
+void processArray(int n,int arr[n]){ //working of menu
 	int ch;
 	for (ch=menu();ch!=4;ch=menu()){
 		switch(ch) {
