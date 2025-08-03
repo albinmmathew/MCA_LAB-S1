@@ -1,0 +1,92 @@
+create table Actors
+(actor_id int primary key,
+name varchar(100) not null,
+birth_year int check(birth_year>1900));
+
+create table Movies
+(movie_id int primary key,
+title varchar(200) unique,
+release_year int ,
+genre varchar(50));
+
+create table Roles
+(role_id int primary key,
+actor_id int references Actors(actor_id),
+movie_id int references Movies(movie_id),
+character_name varchar(100) );
+
+create table Series
+(series_id int primary key,
+title varchar(200) unique,
+seasons int check(seasons>0),
+genre varchar(50) );
+
+create table Directors
+(director_id int primary key,
+name varchar(100) not null,
+birth_year int,
+nationality varchar(50) );
+
+
+
+1.	Insert these 3 actors into Actors: Kit Harington, Emilia Clarke.
+insert into Actors values(001,'Kit Harington',1986);
+insert into Actors values(002,'Emilia Clarke',1986);
+insert into Actors values(003,'Chris Evans',1981);
+
+
+2.	Insert these 3 MCU movies into Movies: Iron Man, The Avengers, Avengers: Endgame.
+insert into Movies values(&movie_id,'&title',&release_year,'&genre');
+
+
+3.	Insert these 2 directors into Directors: Jon Favreau (born 1966, American) and Joss Whedon (born 1964, American).
+insert into Directors values(&director_id,'&name',&birth_year,'&nationality');
+
+
+4.	Insert these roles into Roles:
+	o	Robert Downey Jr. as Tony Stark in Iron Man
+insert into Actors values(004,'Robert Downey jr.',1965);
+insert into roles values(01,004,01,'Tony Stark');
+
+	o	Robert Downey Jr. as Tony Stark in The Avengers
+insert into roles values(02,004,02,'Tony Stark');
+
+	o	Chris Evans as Steve Rogers in The Avengers
+insert into roles values(03,003,02,'Steve Rogers');
+
+	o	Chris Evans as Steve Rogers in Avengers: Endgame
+insert into roles values(04,003,03,'Steve Rogers');
+
+5.	Insert a series titled Game of Thrones with 8 seasons and genre Fantasy.
+insert into series values(1,'Game of Thrones',8,'Fantasy');
+
+6.	Insert a series titled Breaking Bad with 5 seasons and genre Crime/Drama.
+insert into series values(2,'Breaking Bad',5,'Crime/Drama');
+
+7.	Add a CHECK constraint so Movies.release_year must be greater than 1900.
+alter table movies modify (release_year int check(release_year>1900));
+
+8.	Add a budget column to the Movies table.
+alter table movies add (budget int);
+
+9.	Add a rating column to the Movies table.
+alter table movies add (rating int check(rating>=0 AND rating<=10));
+
+10.	Update the genre of Iron Man to Action/Adventure.
+
+
+11.	Update the budget of Avengers: Endgame to 350 million USD.
+12.	Delete the movie Iron Man.
+13.	Delete the actor Emilia Clarke from Actors.
+14.	Drop the Directors table.
+15.	Create a Directs table with director_id and movie_id as FOREIGN KEYS referencing Directors and Movies.
+16.	Select all movies with a budget greater than 200 million USD.
+17.	Select all actors whose name contains the letter ‘C’.
+18.	Select all series with more than 5 seasons.
+19.	List all roles where the character name is Tony Stark.
+20.	List all movies directed by Jon Favreau.
+21.	Update the Series genre of Breaking Bad to Crime/Thriller.
+22.	Make the Directors.nationality column NOT NULL.
+23.	Add a UNIQUE constraint on Directors.name.
+24.	Insert an actor who appears in both Game of Thrones and an MCU movie: Peter Dinklage (Game of Thrones and Avengers: Infinity War).
+25.	Select all actors who have acted in both movies and series.

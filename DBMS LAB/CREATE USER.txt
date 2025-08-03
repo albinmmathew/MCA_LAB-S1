@@ -1,0 +1,4 @@
+LOGIN via SYS AS SYSDBA
+
+CREATE USER user_name IDENTIFIED BY <password>;
+GRANT CONNECT, RESOURCE, dba TO user_name;
