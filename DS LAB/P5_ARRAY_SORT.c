@@ -22,8 +22,8 @@ void disp(int n,int arr[n]){ //function to display all elemenyts in array
 void sort(int n,int arr[n]){ //function for sorting the elements in array in ascending order
 	int i,j,temp;
 	for(i=0;i<n;i++){
-		for(j=0;j<n;j++){
-			if(arr[i]<arr[j]){
+		for(j=i+1;j<n;j++){
+			if(arr[i]>arr[j]){
 				temp=arr[i];
 				arr[i]=arr[j];
 				arr[j]=temp;
@@ -31,6 +31,7 @@ void sort(int n,int arr[n]){ //function for sorting the elements in array in asc
 		}
 	}
 }
+
 
 int menu(){ //funtion for menu interface
 	int ch;

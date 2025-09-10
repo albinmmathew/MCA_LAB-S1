@@ -44,7 +44,6 @@ void multi(){ //function to multipy two matrices
     print(prod,m,p);
 }
 
-
 int main(){
     printf("Enter the dimensions of first Matrix: ");
     scanf("%d%d",&m,&n);
@@ -60,7 +59,6 @@ int main(){
     print(b,n,p);
     printf("The product of matrices is : \n");
     multi();
-
 	return 0;
 }
 

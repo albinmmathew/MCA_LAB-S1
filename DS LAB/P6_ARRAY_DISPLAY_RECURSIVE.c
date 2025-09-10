@@ -11,9 +11,9 @@ void display(){ //display function as a recursive function
 		printf("%d\t",arr[j]);
 		j++;
 		display();
+	}
 	if(j==10)
 		j=0;
-	}
 }
 
 int main(){
