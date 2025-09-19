@@ -23,7 +23,7 @@ int main(){
         operation(str[i]);
     }
     while(top!=-1){
-        printf("%d ",stack[top--]);
+        printf("%c ",stack[top--]);
     }
     return 0;
 }
