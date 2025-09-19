@@ -114,7 +114,7 @@ void IntoPost(char expr[s]) { // Function to convert infix to postfix
 		}
 	}
 	post[j] = '\0'; // Null terminate postfix string
-	printf("Postfix Expression: %s\n", post);
+	printf("postfix Expression: %s\n", post);
 }
 
 int main() {

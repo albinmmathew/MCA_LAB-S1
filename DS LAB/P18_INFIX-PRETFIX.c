@@ -4,7 +4,6 @@ Roll No: 08
 Date: 12/9/2025
 */
 
-
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
