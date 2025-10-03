@@ -49,46 +49,6 @@ void printsparse(int k, int sparse[k][3]) { // Function to display sparse matrix
     }
 }
 
-void addSparse(int k1, int sparse1[k1][3], int k2, int sparse2[k2][3], int result[k1 + k2][3], int *k3) { // Function to add two sparse matrices
-    int i = 0, j = 0, r = 0;
-    while (i < k1 && j < k2) {
-        if (sparse1[i][0] < sparse2[j][0] || (sparse1[i][0] == sparse2[j][0] && sparse1[i][1] < sparse2[j][1])) {
-            result[r][0] = sparse1[i][0];
-            result[r][1] = sparse1[i][1];
-            result[r][2] = sparse1[i][2];
-            i++;
-        } else if (sparse1[i][0] > sparse2[j][0] || (sparse1[i][0] == sparse2[j][0] && sparse1[i][1] > sparse2[j][1])) {
-            result[r][0] = sparse2[j][0];
-            result[r][1] = sparse2[j][1];
-            result[r][2] = sparse2[j][2];
-            j++;
-        } else {
-            result[r][0] = sparse1[i][0];
-            result[r][1] = sparse1[i][1];
-            result[r][2] = sparse1[i][2] + sparse2[j][2];
-            i++;
-            j++;
-        }
-        r++;
-    }
-    while (i < k1) {
-        result[r][0] = sparse1[i][0];
-        result[r][1] = sparse1[i][1];
-        result[r][2] = sparse1[i][2];
-        i++;
-        r++;
-    }
-    while (j < k2) {
-        result[r][0] = sparse2[j][0];
-        result[r][1] = sparse2[j][1];
-        result[r][2] = sparse2[j][2];
-        j++;
-        r++;
-    }
-    *k3 = r; // Update number of non-zero elements in result
-    printf("Addition of Sparse Matrices Result:\n");
-    printsparse(*k3, result);
-}
 
 void reverse(int k, int sparse[k][3]) { // Function to reverse sparse matrix
     int i, temp[3];
@@ -107,6 +67,38 @@ void reverse(int k, int sparse[k][3]) { // Function to reverse sparse matrix
     printsparse(k, sparse);
 }
 
+// Function to multiply two sparse matrices
+void multiplySparse(int x1, int y1, int k1, int sparse1[k1][3], int x2, int y2, int k2, int sparse2[k2][3], int result[x1 * y2][3], int *k3) {
+    int i, j, r = 0;
+    // Convert sparse2 to column-major for faster access
+    for (i = 0; i < x1; i++) {
+        for (j = 0; j < y2; j++) {
+            int sum = 0;
+            int a, b;
+            for (a = 0; a < k1; a++) {
+                if (sparse1[a][0] == i) {
+                    for (b = 0; b < k2; b++) {
+                        if (sparse2[b][0] == sparse1[a][1] && sparse2[b][1] == j) {
+                            sum += sparse1[a][2] * sparse2[b][2];
+                        }
+                    }
+                }
+            }
+            if (sum != 0) {
+                result[r][0] = i;
+                result[r][1] = j;
+                result[r][2] = sum;
+                r++;
+            }
+        }
+    }
+    *k3 = r;
+    printf("Multiplication of Sparse Matrices Result:\n");
+    printsparse(*k3, result);
+    reverse(*k3, result);
+}
+
+
 int main() {
     int x1, y1, x2, y2;
     printf("Enter dimensions of first matrix (rows columns): ");
@@ -118,8 +110,8 @@ int main() {
 
     printf("Enter dimensions of second matrix (rows columns): ");
     scanf("%d %d", &x2, &y2);
-    if (x1 != x2 || y1 != y2) {
-        printf("Error: Matrices must have the same dimensions for addition.\n");
+    if (x2 != y1) {
+        printf("Error: Matrices must have the same dimensions for multiplication.\n");
         return 1;
     }
     int mat2[x2][y2];
@@ -136,10 +128,8 @@ int main() {
     printf("Sparse Representation of Second Matrix:\n");
     printsparse(k2, sparse2);
 
-    int result[k1 + k2][3], k3;
-    addSparse(k1, sparse1, k2, sparse2, result, &k3);
-
-    reverse(k3, result);
+    int result[x1 * y2][3], k3;
+    multiplySparse(x1, y1, k1, sparse1, x2, y2, k2, sparse2, result, &k3);
 
     return 0;
-}
+} 
