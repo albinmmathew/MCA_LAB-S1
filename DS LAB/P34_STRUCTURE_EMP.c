@@ -11,16 +11,33 @@ struct employees {
 	struct employees *next;
 };
 typedef  struct employees emp;
+emp *head = NULL;
 void read(){
-	
+	if (head == NULL){
+		head = (emp*)malloc(sizeof(emp));
+	}
+	else{
+		emp *temp = head;
+		while(temp->next != NULL){
+			temp = temp->next;
+		}
+		printf("Enter Employee No, Name, Salary, Dept No:\n");
+		scanf("%d%s%d%d",&temp->eno, temp->ename, &temp->dno, &temp->esal);
+		temp -> next = NULL;
+	}
 }
 void delete(){
+	display();
+	int d;
+	printf("Enter the id to delete:");
+	scanf("%d",&d);
+	
 	
 }
-void search(int empno){
+void search(){
 	
 }
-void sort(emp emp){
+void sort(){
 	int z;
 	for (z = -1; z != 1 || z != 2 || z!= 3; ){
 		printf("Sort By :\n 1. Name\n 2. Salary \n3. Exit ");
@@ -38,7 +55,5 @@ void sort(emp emp){
 		return;
 }
 int main() {
-	emp emp;
-	free(emp);
 	return 0;
 }
