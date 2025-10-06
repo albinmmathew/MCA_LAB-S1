@@ -7,7 +7,7 @@ Date: 08/08/2025
 #include<stdio.h>
 #define size 10
 
-void read(int poly[],int deg) {
+void read(int poly[],int deg) {	// Function to read polynomial
 	int i;
 	for(i = deg; i >= 0; i--) {
 		printf("Enter the coefficient of x^ %d : ", i);
@@ -15,22 +15,27 @@ void read(int poly[],int deg) {
 	}
 }
 
-void print(int poly[], int deg) {
+void print(int poly[], int deg) {	// Function to print polynomial
 	int i;
-	for(i = deg; i != -1; i--) {
+	for(i = deg; i >= 0; i--) {
 		if(poly[i] == 0)
 			continue;
 		if(i != deg){
-			if(poly[i] != 0) {
+			if(poly[i] > 0 ) {
 				printf(" + ");
+			} else if(poly[i] < 0) {
+				printf(" - ");
 			}
+		} else if(poly[i] < 0) {
+			printf("-");
 		}
+		int coeff = poly[i] < 0 ? -poly[i] : poly[i];
 		if(i == 0){
-			printf("%d", poly[i]);
+			printf("%d", coeff);
 		}else if(i == 1) {
-			printf("%dx", poly[i]);
+			printf("%dx", coeff);
 		}else {
-			printf("%dx^%d",poly[i],i);
+			printf("%dx^%d", coeff, i);
 		}
 	}
 }

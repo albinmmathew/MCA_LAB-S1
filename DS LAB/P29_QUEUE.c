@@ -1,8 +1,9 @@
 /*Program 29 QUEUE
 @ALBIN MAMMEN MATHEW
 Roll No: 08
-Date: 06/08/2025
+Date: 09/08/2025
 */
+
 #include<stdio.h>
 int q[5],front=-1,rear=-1;
 void enqueue(int v){
@@ -17,27 +18,27 @@ void enqueue(int v){
 }
 
 void dequeue(){
-	if (front==-1 || front>rear){
+		if (front==-1 || front>rear){
 		printf("Error: Empty Queue.\n");
-	}
-	else{
-		printf("Disqueued Element: %d",q[front]);
+		}
+		else{
+		printf("Disqueued Element: %d\n",q[front]);
 		front++;
 		if (rear<front)
 			front=rear=-1;
-	}
+		}
 }
 
 void display(){
-	if (front==-1 && rear ==-1){
+		if (front==-1 || rear==-1 || front>rear){
 		printf("Error: Empty Queue.\n");
-	}else{
+		}else{
 		int i;
-		for(i=0;i<=rear;i++){
+		for(i=front;i<=rear;i++){
 			printf("%d \t",q[i]);
 		}
 		printf("\n");
-	}
+		}
 }
 int menu(){ //function for menu
 	int ch;

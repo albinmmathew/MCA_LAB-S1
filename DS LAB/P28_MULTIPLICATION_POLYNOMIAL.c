@@ -1,7 +1,7 @@
-/*Program 26 ADDING POLYNOMIAL
+/*Program 28 MULTIPLYING POLYNOMIAL
 @ALBIN MAMMEN MATHEW
 Roll No: 08
-Date: 08/08/2025
+Date: 13/08/2025
 */
 
 #include<stdio.h>
@@ -38,29 +38,43 @@ void print(int poly[], int deg) {	// Function to print polynomial
 			printf("%dx^%d", coeff, i);
 		}
 	}
-}	
+}
 
-void sum(int poly1[], int poly2[], int sum[], int deg1, int deg2){	// Function to add two polynomials
-	int i, deg, a, b;
-	deg = deg1 > deg2 ? deg1 : deg2;
-	// Zero-initialize arrays up to deg
-	for(i = 0; i <= deg; i++) {
-		a = (i <= deg1) ? poly1[i] : 0;
-		b = (i <= deg2) ? poly2[i] : 0;
-		sum[i] = a + b;
+// Function to multiply two polynomials
+void multiply(int poly1[], int poly2[], int prod[], int deg1, int deg2) {
+	int i, j;
+	// Initialize product array to zero
+	for(i = 0; i <= deg1 + deg2; i++) {
+		prod[i] = 0;
 	}
-	printf("\nSum of polynomial 1 and polynomial 2 is: \n");
-	print(sum, deg);
+	// Multiply polynomials
+	for(i = 0; i <= deg1; i++) {
+		for(j = 0; j <= deg2; j++) {
+			prod[i + j] += poly1[i] * poly2[j];
+		}
+	}
+	printf("\nProduct of polynomial 1 and polynomial 2 is: \n");
+	print(prod, deg1 + deg2);
 }
 
 int main() {
-	int poly1[size], poly2[size], s[size], deg1, deg2;
+	int poly1[size], poly2[size], p[size * 2], deg1, deg2;
+	int i;
+	for(i = 0; i < size; i++) {
+		poly1[i] = 0;
+		poly2[i] = 0;
+		p[i] = 0;
+	}
 	printf("Enter the degree of polynomial 1: ");
 	scanf("%d", &deg1);
 	read(poly1, deg1);
 	printf("Enter the degree of polynomial 2: ");
 	scanf("%d", &deg2);
 	read(poly2, deg2);
-	sum(poly1, poly2, s, deg1, deg2);
+	printf("\nPolynomial 1 is: \n");
+	print(poly1, deg1);
+	printf("\nPolynomial 2 is: \n");
+	print(poly2, deg2);
+	multiply(poly1, poly2, p, deg1, deg2);
 	return 0;
-}	
+}
