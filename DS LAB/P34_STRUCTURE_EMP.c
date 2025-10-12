@@ -14,9 +14,9 @@
 #define max 100
 
 struct employees {
-	int eno;
+	int eno, dno;
 	char ename[20];
-	int  esal, dno;
+	float esal;
 };
 typedef  struct employees emp;
 emp emplist[100];
@@ -29,7 +29,7 @@ void insert(){
 	printf("Enter the employee name :");
 	scanf("%s",emplist[count].ename);
 	printf("Enter the employee salary :");
-	scanf("%d",&emplist[count].esal);
+	scanf("%f",&emplist[count].esal);
 	printf("Enter the department no :");
 	scanf("%d",&emplist[count].dno);
 	printf("Date inserted\n");
@@ -67,14 +67,14 @@ void display(){
     printf("------------------------------------------------------\n");
 
     for (i = 0; i < count; i++) {
-        printf("%-10d %-20s %-10d %-10d\n",
+        printf("%-10d %-20s %-10f %-10d\n",
                emplist[i].eno, emplist[i].ename, emplist[i].esal, emplist[i].dno);
     }
 }
 
 void search(){
 	int no, i, found = 0;
-	printf("\nEnter employee number to delete: ");
+	printf("\nEnter employee number to search: ");
 	scanf("%d", &no);
 	for (i = 0; i < count; i++) {
 		if (emplist[i].eno == no) {
@@ -83,7 +83,7 @@ void search(){
 		}
 	}
 	if (found) {
-		printf("%-10d %-20s %-10d %-10d\n", emplist[i].eno, emplist[i].ename, emplist[i].esal, emplist[i].dno);
+		printf("%-10d %-20s %-10f %-10d\n", emplist[i].eno, emplist[i].ename, emplist[i].esal, emplist[i].dno);
 	} else {
 		printf("Employee not found.\n");
 	}
@@ -117,12 +117,14 @@ void sort(){
 			}
 		}
 	}
+	printf("Employees sorted.\n");
+	display();
 }
 
 int menu(){
 	int ch;
 	printf("INSERT - 1\nDELETE - 2\nDISPLAY - 3\nSEARCH - 4\nSORT - 5\nEXIT - 6\n");
-	printf("Enter your choie: ");
+	printf("Enter your choice: ");
 	scanf("%d",&ch);
 	return ch;
 }
