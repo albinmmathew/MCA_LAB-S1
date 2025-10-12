@@ -32,7 +32,7 @@ void insert(){
 	scanf("%f",&emplist[count].esal);
 	printf("Enter the department no :");
 	scanf("%d",&emplist[count].dno);
-	printf("Date inserted\n");
+	printf("Data inserted\n");
 	count++;	
 }
 
