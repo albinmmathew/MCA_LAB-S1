@@ -1,84 +1,112 @@
+/*Program 32 PRIORITY QUEUE
+@ALBIN MAMMEN MATHEW
+Roll No: 08
+Date: 10/08/2025
+*/
+
 #include <stdio.h>
-#define SIZE 10
+#define SIZE 5  // Maximum size of the queue
 
-int pq[SIZE];  // Priority Queue array
-int n = 0;     // Number of elements in the queue
+int values[SIZE];      // Array for values
+int priorities[SIZE];  // Array for priorities
+int count = 0;         // Number of elements in the queue
 
-// Function to insert element into priority queue
-void insert(int item) {
-    if (n == SIZE) {
-        printf("Priority Queue Overflow!\n");
-        return;
-    }
+// Function to insert (enqueue) an element with priority
+void enqueue(int value, int priority) {
+	if (count == SIZE) {
+		printf("Queue is Full! (Overflow)\n");
+		return;
+	}
 
-    int i;
-    // Insert in sorted order (ascending priority)
-    for (i = n - 1; i >= 0 && item < pq[i]; i--) {
-        pq[i + 1] = pq[i];
-    }
-    pq[i + 1] = item;
-    n++;
-    printf("%d inserted into priority queue.\n", item);
+	values[count] = value;
+	priorities[count] = priority;
+	count++;
+	printf("Inserted value %d with priority %d\n", value, priority);
 }
 
-// Function to delete the highest priority element
-void delete() {
-    if (n == 0) {
-        printf("Priority Queue Underflow!\n");
-        return;
-    }
-
-    // Since array is sorted in ascending order,
-    // the element with highest priority (smallest value) is at index 0
-    printf("%d deleted from priority queue.\n", pq[0]);
-
-    // Shift all elements to left
-    for (int i = 0; i < n - 1; i++) {
-        pq[i] = pq[i + 1];
-    }
-    n--;
+// Function to find index of highest priority element
+int findHighestPriorityIndex() {
+	int highest = 0;
+	int i;
+	for (i = 1; i < count; i++) {
+		if (priorities[i] > priorities[highest]) {
+			highest = i;
+		}
+		// If priorities are equal, the one inserted earlier stays first
+	}
+	return highest;
 }
 
-// Function to display the priority queue
+// Function to delete (dequeue) the highest priority element
+void dequeue() {
+	if (count == 0) {
+		printf("Queue is Empty! (Underflow)\n");
+		return;
+	}
+
+	int index = findHighestPriorityIndex();
+	printf("Deleted value %d with priority %d\n", values[index], priorities[index]);
+
+	// Shift remaining elements
+	int i;
+	for (i = index; i < count - 1; i++) {
+		values[i] = values[i + 1];
+		priorities[i] = priorities[i + 1];
+	}
+	count--;
+}
+
+// Function to display all elements in the queue
 void display() {
-    if (n == 0) {
-        printf("Priority Queue is empty.\n");
-        return;
-    }
+	if (count == 0) {
+		printf("Queue is Empty!\n");
+		return;
+	}
 
-    printf("Priority Queue: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", pq[i]);
-    }
-    printf("\n");
+	printf("Priority Queue elements:\n");
+	int i;
+	for (i = 0; i < count; i++) {
+		printf("Value: %d | Priority: %d\n", values[i], priorities[i]);
+	}
 }
 
-// Main function
-int main() {
-    int choice, item;
-    while (1) {
-        printf("\n--- Priority Queue Menu ---\n");
-        printf("1. Insert\n2. Delete\n3. Display\n4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+int menu() {
+	int ch;
+	printf("\nMenu:\n");
+	printf("1. Enqueue (Insert)\n");
+	printf("2. Dequeue (Delete Highest Priority)\n");
+	printf("3. Display\n");
+	printf("4. Exit\n");
+	printf("Enter your choice: ");
+	scanf("%d", &ch);
+	return ch;
+}
 
-        switch (choice) {
-            case 1:
-                printf("Enter element to insert: ");
-                scanf("%d", &item);
-                insert(item);
-                break;
-            case 2:
-                delete();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                return 0;
-            default:
-                printf("Invalid choice! Try again.\n");
-        }
-    
-    return 0;}
+void processQueue() {
+	int ch, value, priority;
+	for (ch = menu(); ch != 4; ch = menu()) {
+		switch (ch) {
+			case 1:
+				printf("Enter value: ");
+				scanf("%d", &value);
+				printf("Enter priority (higher number = higher priority): ");
+				scanf("%d", &priority);
+				enqueue(value, priority);
+				break;
+			case 2:
+				dequeue();
+				break;
+			case 3:
+				display();
+				break;
+			default:
+				printf("Invalid choice! Try again.\n");
+		}
+	}
+}
+
+int main() {
+	printf("Priority Queue Implementation using Array\n");
+	processQueue();
+	return 0;
 }

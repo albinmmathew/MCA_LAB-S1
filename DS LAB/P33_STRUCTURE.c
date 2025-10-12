@@ -5,7 +5,7 @@ struct date {
 typedef struct date date;
 void read(date *d) {
 	printf("\nEnter the date (dd-mm-yyy) : ");
-	scanf("%d%d%d", &d->day, &d->month, &d->year);
+	scanf("%d-%d-%d", &d->day, &d->month, &d->year);
 }
 void display(date d){
 	printf("Given Date is %d/%d/%d \n",d.day,d.month,d.year);
