@@ -134,17 +134,10 @@ void processArray(){
 	for(ch = menu(); ch != 6; ch = menu()){
 		switch (ch) {
 			case 1:
-				printf("SINGLE  INSERT - 1\nGROUP INSERT -2\n");
-				scanf("%d",&a);
-				if (a == 1){
+				printf("Number of employees to be inserted: ");
+				scanf("%d",&size);
+				for(i = 0;i < size; i++){
 					insert();
-				}
-				else if (a == 2){
-					printf("Number of employees to be inserted: ");
-					scanf("%d",&size);
-					for(i = 0;i < size; i++){
-						insert();
-					}
 				}
 				break;
 			case 2 :

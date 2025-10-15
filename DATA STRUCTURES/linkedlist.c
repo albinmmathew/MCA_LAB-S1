@@ -1,3 +1,8 @@
+/*PROGRAM 50 LINKED LIST FUNCTIONS - INSERT DELETE DISPLAY SORT REVERSE COUNT
+@ALBIN MAMMEN MATHEW
+19/09/2025
+*/
+
 #include<stdio.h>
 #include<malloc.h>
 struct node{
@@ -141,7 +146,7 @@ void sort(){
 	}
 }
 
-/*
+
 void reverse(){
 	node *prev, *curr, *next;
 	prev = NULL;
@@ -159,8 +164,7 @@ void reverse(){
 		}
 		head = prev;
 	}
-} 
-*/
+}
 
 int menu() {
 	int ch;
@@ -202,9 +206,9 @@ void processmenu(){
 			case 6 :
 				count();
 				break;
-			/*case 7 :
+			case 7 :
 				reverse();
-				break;*/
+				break;
 			case 8 :
 				sort();
 				break;

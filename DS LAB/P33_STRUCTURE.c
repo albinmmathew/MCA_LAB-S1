@@ -1,3 +1,8 @@
+/*PROGRAM 33 DATE USING STRUCTURE
+@ALBIN MAMMEN MATHEW
+19/09/2025
+*/
+
 #include<stdio.h>
 struct date {
 	int day, month, year;
@@ -19,8 +24,8 @@ void comparedate(date d, date e) {
 int main () {
 	date d1, d2;
 	read(&d1);
-	read(&d2);
 	display(d1);
+	read(&d2);
 	display(d2);
 	comparedate(d1,d2);
 	return 0;
