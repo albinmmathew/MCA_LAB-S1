@@ -1,0 +1,13 @@
+SET SERVEROUTPUT ON;
+DECLARE
+	CURSOR c1 IS
+	SELECT Course_Name
+	FROM Courses
+	WHERE Prof_ID = 'P1001';
+BEGIN
+	FOR rec IN c1
+	LOOP
+		DBMS_OUTPUT.PUT_LINE('Course: ' || rec.Course_Name);
+	END LOOP;
+END;
+/
