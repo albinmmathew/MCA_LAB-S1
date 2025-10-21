@@ -1,13 +1,14 @@
 /*PROGRAM 50 LINKED LIST FUNCTIONS - INSERT DELETE DISPLAY SORT REVERSE COUNT
 @ALBIN MAMMEN MATHEW
 Roll No: 08
-19/09/2025
+26/09/2025
 */
 
 #include<stdio.h>
-#include<malloc.h>
+#include<stdlib.h>
 #include<string.h>
 
+// Structure for a node
 struct node{
 	char name[50];
 	struct node *next;
@@ -15,6 +16,7 @@ struct node{
 typedef struct node node;
 node *head = NULL;
 
+//Function to insert a name at the end
 void insert(char a[]) {
 	node *t;
 	if(head == NULL){
@@ -33,6 +35,7 @@ void insert(char a[]) {
 	}
 }
 
+// Function to delete a name
 void delete(char a[]) {
 	node *t;
 	if (head == NULL){
@@ -54,11 +57,13 @@ void delete(char a[]) {
 	}
 }
 
+// Function to display all names
 void display(){ 
 	node *t;
 	t = head;
 	if (t == NULL)
 		printf("EMPTY LINKED LIST\n");
+		return;
 	while (t != NULL ) {
 		printf("%s \t ", t->name);
 		t = t->next;
@@ -66,6 +71,7 @@ void display(){
 	printf("\n");
 }
 
+// Function to sort names alphabetically
 void sort(){
 	node *t1, *t2;
 	char temp[50];
@@ -86,7 +92,7 @@ void sort(){
 	}
 }
 
-
+// Function to reverse the linked list
 void reverse(){
 	node *prev, *curr, *next;
 	prev = NULL;
@@ -106,6 +112,7 @@ void reverse(){
 	}
 }
 
+// Function to count nodes
 void count(){
 	node *t;
 	int c = 0;
