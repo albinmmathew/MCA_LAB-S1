@@ -8,13 +8,13 @@
 typedef struct {
 	int coeff;
 	int expo;
-} poly;
+} term;
 
-poly a[10], b[10], add[10];
-int n1, n2, nr;
+term a[10], b[10], diff[10];
+int n1, n2;
 
 // Function to display a polynomial
-void display(poly p[], int *n) {
+void display(term p[], int *n) {
 	int i;
 	for (i = 0; i < *n; i++) {
 		int c = p[i].coeff;
@@ -23,7 +23,9 @@ void display(poly p[], int *n) {
 		if (c == 0)
 			continue; // Skip zero coefficient terms
 
-		// Sign printing
+		int ab = abs(c);
+
+		// Print sign
 		if (i != 0) {
 			if (c > 0)
 				printf("+");
@@ -34,9 +36,7 @@ void display(poly p[], int *n) {
 				printf("-");
 		}
 
-		int ab = abs(c); // Absolute value for printing
-
-		// Coefficient & exponent printing
+		// Print coefficient and exponent
 		if (e == 0)
 			printf("%d", ab);
 		else if (e == 1) {
@@ -54,7 +54,7 @@ void display(poly p[], int *n) {
 	printf("\n");
 }
 
-// Function to read the polynomials
+// Function to read two polynomials
 void read() {
 	printf("Enter the number of terms of first polynomial: ");
 	scanf("%d", &n1);
@@ -63,7 +63,6 @@ void read() {
 		printf("Term %d (coeff exponent): ", i + 1);
 		scanf("%d %d", &a[i].coeff, &a[i].expo);
 	}
-
 	printf("First Polynomial: ");
 	display(a, &n1);
 
@@ -73,43 +72,52 @@ void read() {
 		printf("Term %d (coeff exponent): ", i + 1);
 		scanf("%d %d", &b[i].coeff, &b[i].expo);
 	}
-
 	printf("Second Polynomial: ");
 	display(b, &n2);
 }
 
-// Function to add two polynomials
-void addpoly() {
-	int i = 0, j = 0, k = 0;
+// Function to perform polynomial subtraction
+void subtraction() {
+	term negative[10];
+	int i, j, k = 0;
 
+	// Negate coefficients of second polynomial
+	for (i = 0; i < n2; i++) {
+		negative[i].coeff = -b[i].coeff;
+		negative[i].expo = b[i].expo;
+	}
+
+	i = 0;
+	j = 0;
+
+	// Subtract like terms (similar to addition)
 	while (i < n1 && j < n2) {
-		if (a[i].expo > b[j].expo)
-			add[k++] = a[i++];
-		else if (a[i].expo < b[j].expo)
-			add[k++] = b[j++];
+		if (a[i].expo > negative[j].expo)
+			diff[k++] = a[i++];
+		else if (a[i].expo < negative[j].expo)
+			diff[k++] = negative[j++];
 		else {
-			add[k].coeff = a[i].coeff + b[j].coeff;
-			add[k].expo = a[i].expo;
-			k++;
+			diff[k].coeff = a[i].coeff + negative[j].coeff;
+			diff[k].expo = a[i].expo;
 			i++;
 			j++;
+			k++;
 		}
 	}
 
-	// Copy remaining terms
+	// Add remaining terms
 	while (i < n1)
-		add[k++] = a[i++];
+		diff[k++] = a[i++];
 	while (j < n2)
-		add[k++] = b[j++];
+		diff[k++] = negative[j++];
 
-	nr = k;
-
-	printf("\nResultant Polynomial after Addition: ");
-	display(add, &nr);
+	printf("\nResultant Polynomial after Subtraction: ");
+	display(diff, &k);
 }
 
+// Main function
 int main() {
 	read();
-	addpoly();
+	subtraction();
 	return 0;
 }
