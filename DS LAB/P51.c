@@ -51,16 +51,24 @@ void display() {
 	}
 }
 
-// Main function
-int main() {
+// Function to display menu and get user choice
+int menu() {
+	int choice;
+	printf("\n--- Linked Stack Operations ---\n");
+	printf("1. Push\n");
+	printf("2. Pop\n");
+	printf("3. Display\n");
+	printf("4. Exit\n");
+	printf("Enter your choice: ");
+	scanf("%d", &choice);
+	return choice;
+}
+
+// Function to process stack operations
+void processStack() {
 	int choice, value;
-
 	while (1) {
-		printf("\n--- Linked Stack Operations ---\n");
-		printf("1. Push\n2. Pop\n3. Display\n4. Exit\n");
-		printf("Enter your choice: ");
-		scanf("%d", &choice);
-
+		choice = menu();
 		switch (choice) {
 			case 1:
 				printf("Enter value to push: ");
@@ -80,5 +88,9 @@ int main() {
 				printf("Invalid choice! Try again.\n");
 		}
 	}
+}
+
+int main() {
+	processStack();
 	return 0;
 }
