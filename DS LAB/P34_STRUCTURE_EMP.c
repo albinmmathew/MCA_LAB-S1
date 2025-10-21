@@ -67,7 +67,7 @@ void display(){
     printf("------------------------------------------------------\n");
 
     for (i = 0; i < count; i++) {
-        printf("%-10d %-20s %-10f %-10d\n",
+        printf("%-10d %-20s %-10.2f %-10d\n",
                emplist[i].eno, emplist[i].ename, emplist[i].esal, emplist[i].dno);
     }
 }
@@ -83,7 +83,7 @@ void search(){
 		}
 	}
 	if (found) {
-		printf("%-10d %-20s %-10f %-10d\n", emplist[i].eno, emplist[i].ename, emplist[i].esal, emplist[i].dno);
+		printf("%-10d %-20s %-10.2f %-10d\n", emplist[i].eno, emplist[i].ename, emplist[i].esal, emplist[i].dno);
 	} else {
 		printf("Employee not found.\n");
 	}
@@ -162,4 +162,5 @@ void processArray(){
 int main(){
 	printf("EMPLOYEE DETAILS \n");
 	processArray();
+	return 0;
 }
