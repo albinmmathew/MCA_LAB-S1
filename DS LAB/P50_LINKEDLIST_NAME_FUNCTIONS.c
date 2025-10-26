@@ -61,9 +61,10 @@ void delete(char a[]) {
 void display(){ 
 	node *t;
 	t = head;
-	if (t == NULL)
+	if (t == NULL) {
 		printf("EMPTY LINKED LIST\n");
 		return;
+	}
 	while (t != NULL ) {
 		printf("%s \t ", t->name);
 		t = t->next;

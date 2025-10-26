@@ -1,6 +1,6 @@
 /*PROGRAM 57 LINEAR SEARCH
 @ALBIN MAMMEN MATHEW
-Roll No: 08
+Roll No: 08 
 05/10/2025
 */
 
@@ -8,7 +8,8 @@ Roll No: 08
 
 // Function to perform linear search
 int linearSearch(int arr[], int n, int key) {
-	for (int i = 0; i < n; i++) {
+	int i;
+	for (i = 0; i < n; i++) {
 		if (arr[i] == key)
 			return i;	// Return index if element found
 	}
@@ -16,14 +17,14 @@ int linearSearch(int arr[], int n, int key) {
 }
 
 int main() {
-	int n, key;
+	int n,i, key;
 
 	printf("Enter number of elements: ");
 	scanf("%d", &n);
 
 	int arr[n];
 	printf("Enter %d elements:\n", n);
-	for (int i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 		scanf("%d", &arr[i]);
 
 	printf("Enter element to search: ");

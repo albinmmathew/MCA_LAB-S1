@@ -25,14 +25,14 @@ int binarySearch(int arr[], int n, int key) {
 }
 
 int main() {
-	int n, key;
+	int n,i, key;
 
 	printf("Enter number of elements: ");
 	scanf("%d", &n);
 
 	int arr[n];
 	printf("Enter %d sorted elements:\n", n);
-	for (int i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 		scanf("%d", &arr[i]);
 
 	printf("Enter element to search: ");

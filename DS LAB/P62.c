@@ -54,13 +54,13 @@ void preorderNonRecursive(struct Node* root) {
 
 int main() {
 	struct Node* root = NULL;
-	int n, value;
+	int n, i, value;
 
 	printf("Enter number of nodes: ");
 	scanf("%d", &n);
 
 	printf("Enter %d values:\n", n);
-	for (int i = 0; i < n; i++) {
+	for (i = 0; i < n; i++) {
 		scanf("%d", &value);
 		root = insert(root, value);
 	}

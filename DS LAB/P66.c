@@ -1,6 +1,6 @@
 /*PROGRAM 66 ADJACENCY MATRIX USING LINKED LISTS
 @ALBIN MAMMEN MATHEW
-Roll No: 08
+Roll No: 08 
 18/10/2025
 */
 
@@ -38,9 +38,10 @@ struct Node* createLinkedMatrix(int mat[][10], int n) {
 	struct Node* currRowStart = NULL; // first node of current row
 	struct Node* prev = NULL;
 
-	for (int i = 0; i < n; i++) {
+	int i, j, k;
+	for (i = 0; i < n; i++) {
 		prev = NULL;
-		for (int j = 0; j < n; j++) {
+		for (j = 0; j < n; j++) {
 			// Create new node
 			struct Node* newnode = newNode(mat[i][j]);
 
@@ -55,7 +56,7 @@ struct Node* createLinkedMatrix(int mat[][10], int n) {
 			// Link vertically with previous row
 			if (prevRowStart != NULL) {
 				struct Node* temp = prevRowStart;
-				for (int k = 0; k < j; k++)
+				for (k = 0; k < j; k++)
 					temp = temp->right;
 				temp->down = newnode;
 			}
@@ -97,15 +98,15 @@ void freeMatrix(struct Node* head) {
 }
 
 int main() {
-	int n;
+	int i, j, n;
 	int mat[10][10];
 
 	printf("Enter number of vertices: ");
 	scanf("%d", &n);
 
 	printf("Enter adjacency matrix (%d x %d):\n", n, n);
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < n; j++) {
 			scanf("%d", &mat[i][j]);
 		}
 	}

@@ -16,9 +16,9 @@ struct Node {
 // Function to create a linked list of n nodes
 struct Node* createLinkedList(int n) {
 	struct Node *head = NULL, *temp = NULL, *newNode = NULL;
-	int value;
+	int value,i;
 
-	for (int i = 0; i < n; i++) {
+	for (i = 0; i < n; i++) {
 		newNode = (struct Node *)malloc(sizeof(struct Node));
 		if (newNode == NULL) {
 			printf("Memory not allocated.\n");

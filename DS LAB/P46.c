@@ -16,9 +16,9 @@ struct Node {
 // Function to create linked list
 struct Node* createLinkedList(int n) {
 	struct Node *head = NULL, *temp = NULL, *newNode = NULL;
-	int value;
+	int value,i;
 
-	for (int i = 0; i < n; i++) {
+	for (i = 0; i < n; i++) {
 		newNode = (struct Node *)malloc(sizeof(struct Node));
 		printf("Enter value for node %d: ", i + 1);
 		scanf("%d", &value);

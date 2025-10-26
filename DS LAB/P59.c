@@ -1,6 +1,6 @@
 /*PROGRAM 59 BINARY SEARCH TREE IN ARRAY OF STRINGS
 @ALBIN MAMMEN MATHEW
-Roll No: 08
+Roll No: 08 
 05/10/2025
 */
 
@@ -27,7 +27,7 @@ int binarySearchString(char arr[][50], int n, char key[]) {
 }
 
 int main() {
-	int n;
+	int i,n;
 	char key[50];
 
 	printf("Enter number of strings: ");
@@ -35,7 +35,7 @@ int main() {
 
 	char arr[n][50];
 	printf("Enter %d strings in sorted order:\n", n);
-	for (int i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 		scanf("%s", arr[i]);
 
 	printf("Enter string to search: ");

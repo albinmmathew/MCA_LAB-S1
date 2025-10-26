@@ -46,14 +46,14 @@ void inorder(struct Node* root) {
 
 int main() {
 	struct Node* root = NULL;
-	int n;
+	int i, n;
 	char name[50];
 
 	printf("Enter number of names: ");
 	scanf("%d", &n);
 
 	printf("Enter %d names:\n", n);
-	for (int i = 0; i < n; i++) {
+	for (i = 0; i < n; i++) {
 		scanf("%s", name);
 		root = insert(root, name);
 	}
